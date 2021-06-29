@@ -15,5 +15,5 @@ Nous allons vous présenter Redux, qui travaille avec React.
 
 ## Qui a travaillé sur ce workshop ?
 
-[Laura Vilain](!https://github.com/Laura-VLN), [Loïc Hannecart](!https://github.com/HanLoi) et [Frédérique Baillais](!https://github.com/FrederiqueBaillais)
+[Laura Vilain](https://github.com/Laura-VLN), [Loïc Hannecart](https://github.com/HanLoi) et [Frédérique Baillais](https://github.com/FrederiqueBaillais)
 
