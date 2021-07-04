@@ -53,6 +53,12 @@ Redux vous aide à séparer l'état de l'application de React. Redux crée un ma
 
 Les composants sont restitués chaque fois que le magasin est mis à jour, avec un impact très faible sur les performances. C'est une bonne nouvelle et cela apporte de nombreux avantages. Vous pouvez traiter tous vos composants React facilement, et React peut se concentrer uniquement sur le point de vue de la visualisation..
 
+Sans cela :
+
+* l'état de votre application est complètement décentralisé à travers tous les components de votre application,
+* les mises à jour de vos states ne suivent pas d'ordre précis à cause du temps de réponse du serveur côté API, de l'asynchronicité, de la gestion des routes, etc.
+
+https://dev.to/heytulsiprasad/learn-enough-redux-to-get-started-with-your-projects-32ei
 https://www.softfluent.fr/blog/utiliser-redux-avec-react-js/
 https://fr.accentsconagua.com/articles/code/getting-started-with-redux-why-redux.html
 https://openclassrooms.com/fr/courses/5511091-organisez-votre-application-avec-la-logique-redux/5879596-initiez-vous-a-la-philosophie-de-redux
