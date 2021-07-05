@@ -58,7 +58,88 @@ Sans cela :
 * l'état de votre application est complètement décentralisé à travers tous les components de votre application,
 * les mises à jour de vos states ne suivent pas d'ordre précis à cause du temps de réponse du serveur côté API, de l'asynchronicité, de la gestion des routes, etc.
 
-https://dev.to/heytulsiprasad/learn-enough-redux-to-get-started-with-your-projects-32ei
-https://www.softfluent.fr/blog/utiliser-redux-avec-react-js/
-https://fr.accentsconagua.com/articles/code/getting-started-with-redux-why-redux.html
-https://openclassrooms.com/fr/courses/5511091-organisez-votre-application-avec-la-logique-redux/5879596-initiez-vous-a-la-philosophie-de-redux
+
+## Introduction React-Redux
+
+Pour comprendre le fonctionnement de React-Redux, il faut avant tout comprendre les particularités qui le caractérise. Ainsi, nous allons aborder le magasin (store), les reducers, les actions, etc...
+
+### Fonction pure
+
+  Une fonction pure est juste une fonction normale avec deux contraintes supplémentaires auxquelles elle doit satisfaire: 
+
+  * Étant donné un ensemble d'entrées, la fonction devrait toujours renvoyer la même sortie. 
+  * Il ne produit aucun effet secondaire.
+
+  Les fonctions pures donnent un résultat prévisible et sont déterministes. Une fonction devient impure lorsqu'elle effectue autre chose que le calcul de sa valeur de retour. 
+
+
+### Le store
+
+  Le store est un grand objet JavaScript qui contient des tonnes de paires clé-valeur qui représentent l'état actuel de l'application. Contrairement à l'objet d'état dans React qui est réparti sur différents composants, nous n'avons qu'un seul magasin. Le store fournit l’état de l’application et chaque fois que l’état est mis à jour, la vue est rendue. 
+
+  toutefois, vous ne pouvez jamais muter ou changer de magasin. Au lieu de cela, vous créez de nouvelles versions du store via une action et le reducer. 
+
+### Qu’est-ce qu’une action au sens Redux ?
+
+  Les actions envoient les données de l’application vers un store. Ce sont les seules sources d’information pour un store. Elles sont définies comme un objet Javascript qui a une propriété ‘type’ pour indiquer le type d’action réalisé :
+
+  Les actions sont définies par des fonctions appelées Action Creators puis envoyées aux Reducer par la fonction dispatch().
+
+  Comment faire pour exécuter simultanément plusieurs actions ?
+
+  Il est possible avec React de créer des actions asynchrones non bloquantes (les Redux async action évoquées en haut de l’article).
+
+  Si les actions décrivent un changement qui vient de se produire, qui change le state de l’application ?
+
+  C’est là qu’interviennent les Reducer.
+
+
+### Les Reducers
+
+  Le reducer est une fonction pure (sans état) qui prend en entrée le précédent state et un action pour retourner en sortie le prochain state.
+
+     (previousState, action) =>  newState
+
+  Dans notre application, cela se retrouve comme cela :
+
+    const initialState = { time: { h: 0, m: 0, s: 0 }, seconds: 0 };
+
+    const reducer = (state = initialState, action) => {
+    switch (action.type) {
+      case INCREMENT:
+        return {
+          ...state,
+          seconds: state.seconds + 60,
+          time: action.secToTime(state.seconds + 60),
+        };
+      case DECREMENT:
+        return {
+          ...state,
+          seconds: state.seconds - 60,
+          time: action.secToTime(state.seconds - 60),
+        };
+      case COUNTDOWN:
+        return {
+          ...state,
+          seconds: state.seconds - 1,
+          time: action.secToTime(state.seconds - 1),
+        };
+      case COUNTDOWNATZERO:
+        return {
+          ...state,
+          seconds: 0,
+          time: { h: 0, m: 0, s: 0 },
+        };
+      case RESET:
+        return {
+          ...state,
+          time: { h: 0, m: 0, s: 0 },
+          seconds: 0,
+        };
+      default:
+        return state;
+    }
+  };
+
+
+
