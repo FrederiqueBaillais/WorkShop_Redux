@@ -63,6 +63,47 @@ Sans cela :
 
 Pour comprendre le fonctionnement de React-Redux, il faut avant tout comprendre les particularités qui le caractérise. Ainsi, nous allons aborder le magasin (store), les reducers, les actions, etc...
 
+### Redux et son intégration dans l'UI
+
+Pour utilisé redux with UI layer, il est nécessaire de passer par ces étapes :
+
+  * Create a Redux store / Crée le store
+  * Subscribe to updates / Utiliser la fonction Subscribe()
+  * Inside the subscription callback: / A l'intérieur du callback de la fonction subscribe()
+      * Get the current store state / récupérer l'état actuelle 
+      * Extract the data needed by this piece of UI / extraire les données nécessaire par l'UI
+      * Update the UI with the data / Mettre à jour l'UI avec les données
+  * If necessary, render the UI with initial state / si nécessaire, rendre l'UI avec les états initials
+  * Respond to UI inputs by dispatching Redux actions / Répondre à l'UI en affichant les actions de Redux
+
+// 1) Create a new Redux store with the `createStore` function
+const store = Redux.createStore(counterReducer)
+
+// 2) Subscribe to redraw whenever the data changes in the future
+store.subscribe(render)
+
+// Our "user interface" is some text in a single HTML element
+const valueEl = document.getElementById('value')
+
+// 3) When the subscription callback runs:
+function render() {
+  // 3.1) Get the current store state
+  const state = store.getState()
+  // 3.2) Extract the data you want
+  const newValue = state.value.toString()
+
+  // 3.3) Update the UI with the new value
+  valueEl.innerHTML = newValue
+}
+
+// 4) Display the UI with the initial store state
+render()
+
+// 5) Dispatch actions based on UI inputs
+document.getElementById('increment').addEventListener('click', function () {
+  store.dispatch({ type: 'counter/incremented' })
+})
+
 ### Fonction pure
 
   Une fonction pure est juste une fonction normale avec deux contraintes supplémentaires auxquelles elle doit satisfaire: 
@@ -141,5 +182,30 @@ Pour comprendre le fonctionnement de React-Redux, il faut avant tout comprendre 
     }
   };
 
+### Redux Application Data Flow#
 
+Earlier, we talked about "one-way data flow", which describes this sequence of steps to update the app:
+
+    State describes the condition of the app at a specific point in time
+    The UI is rendered based on that state
+    When something happens (such as a user clicking a button), the state is updated based on what occurred
+    The UI re-renders based on the new state
+
+For Redux specifically, we can break these steps into more detail:
+
+    Initial setup:
+        A Redux store is created using a root reducer function
+        The store calls the root reducer once, and saves the return value as its initial state
+        When the UI is first rendered, UI components access the current state of the Redux store, and use that data to decide what to render. They also subscribe to any future store updates so they can know if the state has changed.
+    Updates:
+        Something happens in the app, such as a user clicking a button
+        The app code dispatches an action to the Redux store, like dispatch({type: 'counter/incremented'})
+        The store runs the reducer function again with the previous state and the current action, and saves the return value as the new state
+        The store notifies all parts of the UI that are subscribed that the store has been updated
+        Each UI component that needs data from the store checks to see if the parts of the state they need have changed.
+        Each component that sees its data has changed forces a re-render with the new data, so it can update what's shown on the screen
+
+Here's what that data flow looks like visually:
+
+![Visualisation du data flow](https://redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)
 
