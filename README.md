@@ -60,103 +60,118 @@ Sans cela :
 
 ## Introduction React
 
-Avant de s'intéresser de plus près à Redux, il est important de comprendre les avantages de React : 
+  Avant de s'intéresser de plus près à Redux, il est important de comprendre les avantages de React : 
 
-  * La rapidité : React utilise un Virtual DOM qui permet d’updater le DOM uniquement sur les parties qui ont été modifiées. Autrement dit, il n'est pas nécessaire de réactualiser (comme sur Facebook par exemple).
-  * La facilité d’utilisation : La création et la maintenance d’une application à grande échelle sont rendues beaucoup moins complexes.
-  * Le support : La communauté est vaste, open source et maintenue par Facebook.
+    * La rapidité : React utilise un Virtual DOM qui permet d’updater le DOM uniquement sur les parties qui ont été modifiées. Autrement dit, il n'est pas nécessaire de réactualiser (comme sur Facebook par exemple).
+    * La facilité d’utilisation : La création et la maintenance d’une application à grande échelle sont rendues beaucoup moins complexes.
+    * Le support : La communauté est vaste, open source et maintenue par Facebook.
 
-Lorsque l'on pense une application en React, il est important de scinder l'application en plusieurs parties. On pourrait, par exemple, avoir un bloc header, un bloc footer, un bloc navbar et un bloc contenu. Ces éléments s'appellent alors des composants.
+  Lorsque l'on pense une application en React, il est important de scinder l'application en plusieurs parties. On pourrait, par exemple, avoir un bloc header, un bloc footer, un bloc navbar et un bloc contenu. Ces éléments s'appellent alors des composants.
 
-On retrouve les composants classes et les composants fonctionnels qui vont permettre d'avoir un code réutilisable beaucoup plus facilement. Ils fonctionnent grâce au JSX qui est une version du HTML directement écrite à l'intérieur du composant.
+  On retrouve les composants classes et les composants fonctionnels qui vont permettre d'avoir un code réutilisable beaucoup plus facilement. Ils fonctionnent grâce au JSX qui est une version du HTML directement écrite à l'intérieur du composant.
 
 ### Render
 
-La fonction render est très simple à comprendre : 
+  La fonction render est très simple à comprendre : 
 
-  <div id="root"></div>
+    ```
+    <div id="root"></div>
+    ```
 
--> Dans le body du fichier HTML on ajoute une div avec, par exemple, l'id "root".
+  -> Dans le body du fichier HTML on ajoute une div avec, par exemple, l'id "root".
 
-  const element = <h1>Hello World!</h1>;
-  ReactDOM.render(element, document.getElementById('root'));
+    ```
+    const element = <h1>Hello World!</h1>;
+    ReactDOM.render(element, document.getElementById('root'));
+    ```
 
--> Le composant est constitué d'une constante element qui a pour valeur "Hello World!".
--> La fonction render renvoie element dans la div dont l'id est "root".
+  -> Le composant est constitué d'une constante element qui a pour valeur "Hello World!".
+  -> La fonction render renvoie element dans la div dont l'id est "root".
 
 ### Fonctions classes
 
-  class Welcome extends React.Component {
-  render() {
-    return <h1>Bonjour, {this.props.name}</h1>;
-  }
-}
+    ```
+    class Welcome extends React.Component {
+      render() {
+        return <h1>Bonjour, {this.props.name}</h1>;
+      }
+    }
+    ```
 
-On crée une classe Welcome qui étant de React.component et dont le render retournera un titre h1 "Bonjour, -le name qui aura été défini-". 
+  On crée une classe Welcome qui étant de React.component et dont le render retournera un titre h1 "Bonjour, -le name qui aura été défini-". 
 
 ### Fonctions composants
 
-  function Welcome(props) {
-    return <h1>Bonjour, {props.name}</h1>;
-  }
+    ```
+    function Welcome(props) {
+      return <h1>Bonjour, {props.name}</h1>;
+    }
+    ```
 
-On crée une fonction Welcome, qui prendra props comme paramètre et qui va retourner un titre h1 "Bonjour, -le name qui aura été défini-".
+  On crée une fonction Welcome, qui prendra props comme paramètre et qui va retourner un titre h1 "Bonjour, -le name qui aura été défini-".
 
 ### Spécificités des composants
 
 Les composants ne peuvent jamais modifier leurs propres props : 
 
-  function sum(a, b) {
-    return a + b;
-  }
-    -> Fonction pure
+    ```
+    function sum(a, b) {
+      return a + b;
+    }
+    ```
+      -> Fonction pure
 
-  function withdraw(account, amount) {
-    account.total -= amount;
-  }
-    -> Fonction impure
+    ```
+    function withdraw(account, amount) {
+      account.total -= amount;
+    }
+    ```
+      -> Fonction impure
 
-Tout composant React doit agir comme une fonction pure vis-à-vis de ses props.
+  Tout composant React doit agir comme une fonction pure vis-à-vis de ses props.
 
 
 ### Props
 
-  function Welcome(props) {
-  return <h1>Bonjour, {props.name}</h1>;
-  }
+    ```
+    function Welcome(props) {
+    return <h1>Bonjour, {props.name}</h1>;
+    }
 
+    const element = <Welcome name="Sara" />;
+    ReactDOM.render(
+      element,
+      document.getElementById('root')
+    );
+    ```
 
-  const element = <Welcome name="Sara" />;
-  ReactDOM.render(
-    element,
-    document.getElementById('root')
-  );
-
-* On appelle ReactDOM.render() avec l’élément <Welcome name="Sara" />.
-* React appelle le composant Welcome avec comme props {name: 'Sara'}.
-* Notre composant Welcome retourne un élément <h1>Bonjour, Sara</h1> pour résultat.
-* React DOM met à jour efficacement le DOM pour correspondre à <h1>Bonjour, Sara</h1>.
+  * On appelle ReactDOM.render() avec l’élément ```<Welcome name="Sara" />```.
+  * React appelle le composant Welcome avec comme props ```{name: 'Sara'}```.
+  * Notre composant Welcome retourne un élément ```<h1>Bonjour, Sara</h1>``` pour résultat.
+  * React DOM met à jour efficacement le DOM pour correspondre à ```<h1>Bonjour, Sara</h1>```.
 
 ### Etat des composants
 
-On peut définir l'état initial d'un composant (données, interface, ...) et celui-ci sera mis à jour automatiquement, sans besoin de réactualiser. Lorsque l'état changera, seule cette donnée sera modifiée dans le DOM.
+  On peut définir l'état initial d'un composant (données, interface, ...) et celui-ci sera mis à jour automatiquement, sans besoin de réactualiser. Lorsque l'état changera, seule cette donnée sera modifiée dans le DOM.
 
-  class Clock extends React.Component {
-    constructor(props) {
-      super(props);
+    ```
+    class Clock extends React.Component {
+      constructor(props) {
+        super(props);
 
-    this.state = {date: new Date()};
-  }
+      this.state = {date: new Date()};
+      }
 
-    render() {
-      return (
-        <div>
-          <h1>Bonjour, monde !</h1>
-          <h2>Il est {this.state.date.toLocaleTimeString()}.</h2>
-        </div>
-      );
+      render() {
+        return (
+          <div>
+            <h1>Bonjour, monde !</h1>
+            <h2>Il est {this.state.date.toLocaleTimeString()}.</h2>
+          </div>
+        );
+      }
     }
-  }
+    ```
 
 ## Introduction React-Redux
 
