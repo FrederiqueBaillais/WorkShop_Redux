@@ -28,6 +28,8 @@ Nous allons vous présenter Redux, qui travaille avec React.
 
 ## Introduction React
 
+  React est une librairie JavaScript libre développée par Facebook depuis 2013. 
+
   Avant de s'intéresser de plus près à Redux, il est important de comprendre les avantages de React : 
 
     * La rapidité : React utilise un Virtual DOM qui permet d’updater le DOM uniquement sur les parties qui ont été modifiées. Autrement dit, il n'est pas nécessaire de réactualiser (comme sur Facebook par exemple).
@@ -145,9 +147,7 @@ Les composants ne peuvent jamais modifier leurs propres props :
 
 ### Historique
 
-React est une librairie JavaScript libre développée par Facebook depuis 2013. Le but principal de cette librairie est de faciliter la création d'applications web monopage via la création de composants dépendants d'un état et générants une page (ou portion) HTML à chaque changement d'état. 
-
-Redux, quant à lui, a été créé par Dan Abramov et Andrew Clark et sa première version est apparue le 2 juin 2015. Abramov a commencé à écrire la première implémentation de Redux lors de la préparation pour un discours de conférence à React Europe. Sa dernière version est actuellement la 7.1.0 qui est sortie le 11 juin 2019. 
+Redux a été créé par Dan Abramov et Andrew Clark et sa première version est apparue le 2 juin 2015. Abramov a commencé à écrire la première implémentation de Redux lors de la préparation pour un discours de conférence à React Europe. Sa dernière version est actuellement la 7.1.0 qui est sortie le 11 juin 2019. 
 
 ### Comprendre Redux
 
