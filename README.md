@@ -4,12 +4,21 @@ Nous allons vous présenter Redux, qui travaille avec React.
 
 ## Plan de travail
 
-* Introduction
-  * Explications
+* Introduction React
+  * Render
+  * Fonctions classes
+  * Fonctions composants
+  * Spécificités des composants
+  * Props
+  * Etats des composants
+* Introduction React - Redux
   * Historique
-  * Contexte
-* Installation
-  * Toutes les commandes terminal
+  * Comprendre Redux 
+  * Vocabulaire
+  * Le store
+  * Qu’est-ce qu’une action au sens Redux ?
+  * Les reducers
+  * Intégration de Redux
 * Projet
   * Repo dévoilé au fur et à mesure
 
