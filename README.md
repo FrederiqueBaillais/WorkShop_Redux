@@ -173,7 +173,7 @@ Pour Redux spécifiquement, nous pouvons décomposer ces étapes :
   * Le code de l'app dispatche une action vers le store de Redux, comme par exemple ({type: 'counter/incremented'})
   * Le store lance encore la fonction du reducer avec l'état précédent et l'action actuelle et sauvegarde les données retournées comme le nouvel état
   * Le store notifie toutes les parties de l'UI qu'il a été mis à jour
-  * Each UI component that needs data from the store checks to see if the parts of the state they need have changed./Chaque component de l'UI qui a besoin des données du store vérifie si la partie des états dont ils ont besoin a changé.
+  * Chaque component de l'UI qui a besoin des données du store vérifie si la partie des états dont ils ont besoin a changé.
   * Chaque component qui constate que ses données ont changé refait un rendu avec ces nouvelles données, ainsi il peut mettre à jour ce qui est affiché à l'écran
 
 Visualisation du data flow :
