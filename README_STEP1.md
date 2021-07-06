@@ -8,7 +8,7 @@ Donc, pour commencer, nous avons téléchargé le code d'état primitif dans la 
 
 ```git checkout react```
 
-```npm i```
+```npm i``` ou ```npm install```
 
 ```npm start```
 

@@ -1,6 +1,6 @@
 ## Création du réducteur ```timer.js```
 
-Tout d'abord, importons nos variables d'action au-dessus de la structure du fichier.
+Tout d'abord, importons nos variables d'action au-dessus de la structure du fichier dans le fichier src/store/reducers/timer.js.
 
 ```javascript
 import {

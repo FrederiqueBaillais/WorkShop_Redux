@@ -2,7 +2,7 @@
 
 ```mapStateToProps```
 
-Il s'agit d'une fonction qui fonctionne en sous-jacent pour nous donner accès à l'état global de notre composant, qui peut ensuite être consulté en tant que components dans notre composant.
+Il s'agit d'une fonction qui fonctionne en sous-jacent pour nous donner accès à l'état global de notre composant, qui peut ensuite être consulté en tant que components dans notre composant. Il faut donc ajouter mapStateToProps à l'extérieur du component Timer.
 
 ```javascript
 const mapStateToProps = (state) => {

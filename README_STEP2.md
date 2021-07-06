@@ -2,7 +2,7 @@
 
 D'après nos connaissances Redux précédentes, nous savons que l'ensemble de notre application doit disposer d'un store global qui stockera toutes les données d'état. Choisissons donc la structure de notre store.
 
-Tout d'abord, nous créerons un dossier ```store``` dans le répertoire racine, pour contenir les actions et les réducteurs nécessaires.
+Tout d'abord, nous créerons un dossier ```store``` dans le répertoire /src, pour contenir les actions et les réducteurs nécessaires.
 
 Maintenant, si vous regardez l'état de notre application prête à l'emploi dans la branche ```react```, c'est :
 
