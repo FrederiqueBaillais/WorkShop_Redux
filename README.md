@@ -184,14 +184,14 @@ document.getElementById('increment').addEventListener('click', function () {
 
 ### Redux Application Data Flow#
 
-Earlier, we talked about "one-way data flow", which describes this sequence of steps to update the app:
+Earlier, we talked about "one-way data flow", which describes this sequence of steps to update the app:/Auparavant, nous vous avons expliquer le "one-way data flow", qui décrit les séquences pour mettre à jours l'app:
 
-    State describes the condition of the app at a specific point in time
-    The UI is rendered based on that state
-    When something happens (such as a user clicking a button), the state is updated based on what occurred
-    The UI re-renders based on the new state
+    State describes the condition of the app at a specific point in time/ L'état décrits les conditions de l'app à un point spécifique du temps
+    The UI is rendered based on that state/ L'UI est rendu en se basant sur l'état
+    When something happens (such as a user clicking a button), the state is updated based on what occurred/ Quand quelque chose arrive(comme un utilisateur qui clique sur un bouton), l'état est mis à jours en fonction de ce qu'il y eu
+    The UI re-renders based on the new state / L'UI est re-rendu en fonction du nouveau état
 
-For Redux specifically, we can break these steps into more detail:
+For Redux specifically, we can break these steps into more detail:/ Pour
 
     Initial setup:
         A Redux store is created using a root reducer function
@@ -205,7 +205,7 @@ For Redux specifically, we can break these steps into more detail:
         Each UI component that needs data from the store checks to see if the parts of the state they need have changed.
         Each component that sees its data has changed forces a re-render with the new data, so it can update what's shown on the screen
 
-Here's what that data flow looks like visually:
+Here's what that data flow looks like visually:/ Visualisation du data flow :
 
 ![Visualisation du data flow](https://redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)
 
