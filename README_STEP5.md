@@ -2,7 +2,7 @@
 
 ```mapStateToProps```
 
-Il s'agit d'une fonction qui fonctionne en sous-jacent pour nous donner accès à l'état global de notre composant, qui peut ensuite être consulté en tant qu'accessoires dans notre composant.
+Il s'agit d'une fonction qui fonctionne en sous-jacent pour nous donner accès à l'état global de notre composant, qui peut ensuite être consulté en tant que components dans notre composant.
 
 ```javascript
 const mapStateToProps = (state) => {
@@ -13,11 +13,11 @@ const mapStateToProps = (state) => {
 };
 ```
 
-Maintenant, comment devons-nous accéder à la propriété ```tmr``` à l'intérieur du ```state```? C'est parce que nous avons combiné notre routeur, ```timer.js``` dans notre fichier ```index.js``` en utilisant ```combineReducers``` (toujours dans l'éventualité d'un autre réducteur à combiner) et nous avons donné ces noms dans notre fichier ```index```. Cela nous donnera la juste valeur de notre état.
+Maintenant, comment devons-nous accéder à la propriété ```tmr``` à l'intérieur du ```state```? C'est parce que nous avons combiné notre "routeur" ```timer.js``` dans notre fichier ```index.js``` en utilisant ```combineReducers``` (toujours dans l'éventualité d'un autre réducteur à combiner) et nous avons indiqué ce nom dans notre fichier ```index```. Cela nous donnera la juste valeur de notre état.
 
 ```mapDispatchToProps```
 
-Si vous vous demandiez comment passer les actions de notre composant au réducteur, c'est ce que fait cette fonction ```mapDispatchToProps```. Cela renvoie un tas de fonctions à l'intérieur d'un objet, qui, lorsqu'elles sont appelées, envoient l'action particulière que nous avons écrite pour lui. 
+Si vous vous demandiez comment passer les actions de notre composant au réducteur, c'est ce que fait cette fonction ```mapDispatchToProps```. Cela renvoie un tas de fonctions à l'intérieur d'un objet, qui, lorsqu'elles sont appelées, envoient l'action particulière que nous avons écrite pour cet objet. 
 
 ```javascript
 const mapDispatchToProps = (dispatch) => {
@@ -35,16 +35,15 @@ Ainsi, nous pouvons maintenant accéder à ces fonctions ```props``` dans notre 
 
 ## Comment accéder au Store depuis n'importe quel composant ?
 
-La fonction ```mapStateToProps``` nous donne accès au store global via des accessoires.
+La fonction ```mapStateToProps``` nous donne accès au store global via des components.
 
 Ci-dessus, nous pouvons voir que cette fonction renvoie deux propriétés, à savoir ```time``` et ```seconds```. Nous pouvons y accéder où nous voulons en faisant simplement ```this.props.time``` et ```this.props.seconds```.
 
 ## Répartir des actions au lieu d'utiliser ```this.setState()```
 
-Nous avons déjà accès à tous les répartiteurs d'actions et à l'état global de notre composant via les accessoires, en utilisant les fonctions ```mapStateToProps``` et ```mapDispatchToProps```. Maintenant, il nous suffit de remplacer notre ```this.setState()``` par l'envoi des actions requises.
+Nous avons déjà accès à tous les répartiteurs d'actions et à l'état global de notre composant via les components, en utilisant les fonctions ```mapStateToProps``` et ```mapDispatchToProps```. Maintenant, il nous suffit de remplacer notre ```this.setState()``` par l'envoi des actions requises.
 
-
-Quand on clique dessus, il y a une fonction ```this.incTimer``` qui s'exécute, comme ceci :
+Quand on clique sur +, il y a une fonction ```this.incTimer``` qui s'exécute, comme ceci :
 
 ```javascript
 incTimer() {
@@ -129,8 +128,8 @@ Nous devons donc remplacer le code ci-dessous de notre méthode ```render()``` p
 let { h, m, s } = this.timeFormatter(this.state.time);
 ```
 
-Vous souvenez-vous comment sommes-nous censés accéder à notre store ?
-Comme nous avons déjà mappé notre état sur les accessoires, nous pouvons facilement y accéder comme ceci.
+Vous souvenez-vous comment nous sommes censés accéder à notre store ?
+Comme nous avons déjà mappé notre état sur les components, nous pouvons facilement y accéder comme ceci.
 
 ```javascript
 this.props.time
@@ -145,4 +144,4 @@ let { h, m, s } = this.timeFormatter(this.props.time);
 
 Maintenant, nous pouvons facilement afficher les données de notre store global dans notre méthode ```render()```, ce qui fait que notre application fonctionne parfaitement. Vous pouvez maintenant exécuter votre serveur à l'aide de ```npm run start``` ou ```yarn start``` pour voir comment fonctionne votre compte à rebours.
 
-Nous espèrons que c'était une construction amusante.
+Nous espérons que c'était une construction amusante pour vous, comme ça l'a été pour nous ;-)

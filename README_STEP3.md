@@ -34,4 +34,4 @@ La prochaine chose que nous devrions faire est de descendre ```export default Ti
 
 ```export default connect(mapStateToProps, mapDispatchToProps)(Timer);```
 
-Attends, mais c'est quoi ```mapStateToPropset``` et ```mapDispatchToProps``` ? Ce ne sont des fonctions que nous allons bientôt définir. Nous y reviendrons une fois que nous aurons fini de fabriquer notre réducteur. Une chose à la fois.
+Attends, mais c'est quoi ```mapStateToPropset``` et ```mapDispatchToProps``` ? Ce sont des fonctions que nous allons bientôt définir. Nous y reviendrons une fois que nous aurons fini de fabriquer notre réducteur. Une chose à la fois.
