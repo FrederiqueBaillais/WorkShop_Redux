@@ -314,7 +314,7 @@ For Redux specifically, we can break these steps into more detail:/Pour Redux sp
   * Each UI component that needs data from the store checks to see if the parts of the state they need have changed./Chaque component de l'UI qui ont besoin des données du store regarde si la partie des états qu'ils ont besoin ont changé.
   * Each component that sees its data has changed forces a re-render with the new data, so it can update what's shown on the screen/Chaque component qui constate que ses données ont changé refait un rendu avec ces nouvelles données, ainsi il peut mettre à jours ce qui est afficher à l'écran
 
-Here's what that data flow looks like visually:/Voilà visuellement ce qui se passe avec les données :
+Here's what that data flow looks like visually:/ Visualisation du data flow :
 
 ![Visualisation du data flow](https://redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)
 
