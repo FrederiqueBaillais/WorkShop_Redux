@@ -21,13 +21,6 @@ Nous allons vous présenter Redux, qui travaille avec React.
 
 ### Explication - Pourquoi utiliser React-Redux ?
 
-<!-- Explication de React et ce qu'apporte Redux => phrase intéressante
-Dan Abramov décrit Redux comme un conteneur à état prévisible pour les applications Javascript.
-
-Dan Abramov :
-
-    Redux is a predictable state container for JavaScript apps. It’s a « state container » because it holds all the state of your application. It doesn’t let you change that state directly, but instead forces you to describe changes as plain objects called « actions ». Actions can be recorded and replayed later, so this makes state management predictable. With the same actions in the same order, you’re going to end up in the same state.
-    -->
 ### Historique
 
 React est une librairie JavaScript libre développée par Facebook depuis 2013. Le but principal de cette bibliothèque est de faciliter la création d'applications web monopage, via la création de composants dépendants d'un état et générants une page (ou portion) HTML à chaque changement d'état. 
@@ -298,28 +291,30 @@ document.getElementById('increment').addEventListener('click', function () {
 
 ### Redux Application Data Flow#
 
-Earlier, we talked about "one-way data flow", which describes this sequence of steps to update the app:
+Auparavant, nous avons parler du "one-way data flow", qui déscrit les étapes de la mise à jour de l'app :
 
-    State describes the condition of the app at a specific point in time
-    The UI is rendered based on that state
-    When something happens (such as a user clicking a button), the state is updated based on what occurred
-    The UI re-renders based on the new state
+  * L'état décrit la condition de l'app à un moment précis
+  * L'UI fait un rendu basé sur cet état
+  * Quand quelque chose survient (comme le clique d'un utilisateur),l'état est mis à jour sur base de cet évènement
+  * L'UI refait un rendu basé sur ce nouvel état
 
-For Redux specifically, we can break these steps into more detail:
+For Redux specifically, we can break these steps into more detail:/Pour Redux spécifiquement, nous pouvons nous passer de ces étapes :
 
-    Initial setup:
-        A Redux store is created using a root reducer function
-        The store calls the root reducer once, and saves the return value as its initial state
-        When the UI is first rendered, UI components access the current state of the Redux store, and use that data to decide what to render. They also subscribe to any future store updates so they can know if the state has changed.
-    Updates:
-        Something happens in the app, such as a user clicking a button
-        The app code dispatches an action to the Redux store, like dispatch({type: 'counter/incremented'})
-        The store runs the reducer function again with the previous state and the current action, and saves the return value as the new state
-        The store notifies all parts of the UI that are subscribed that the store has been updated
-        Each UI component that needs data from the store checks to see if the parts of the state they need have changed.
-        Each component that sees its data has changed forces a re-render with the new data, so it can update what's shown on the screen
+  Setup initial:
 
-Here's what that data flow looks like visually:
+  * Un store Redux est crée dans le root du reducer
+  * The store calls the root reducer once, and saves the return value as its initial state/Le store appel le reducer une fois et sauvegarde les valeur retournée comme l'état initiale
+  * Quand l'UI est rendu, le component de l'UI a accès à l'état actuelle du store de Redux et utilise ces données pour décider quoi rendre. Il observe aussi les futures   mise à jours du store ainsi il sait quand un état a changé.
+  
+  Mise à jour:
+  * Something happens in the app, such as a user clicking a button/ Quelque chose survient dans l'app, comme le clique sur un bouton 
+  * The app code dispatches an action to the Redux store, like dispatch({type: 'counter/incremented'})/ Le code de l'app est envoyé par une action vers le store de Redux, comme par exemple envoyé ({type: 'counter/incremented'})
+  * The store runs the reducer function again with the previous state and the current action, and saves the return value as the new state/Le store lance encore la fonction du reducer avec les états précédents et l'action actuelle et sauvegarde les données retourner comme le nouvel état
+  * The store notifies all parts of the UI that are subscribed that the store has been updated/Le store notifie toutes les parties de l'UI qu'il a été mis à jours
+  * Each UI component that needs data from the store checks to see if the parts of the state they need have changed./Chaque component de l'UI qui ont besoin des données du store regarde si la partie des états qu'ils ont besoin ont changé.
+  * Each component that sees its data has changed forces a re-render with the new data, so it can update what's shown on the screen/Chaque component qui constate que ses données ont changé refait un rendu avec ces nouvelles données, ainsi il peut mettre à jours ce qui est afficher à l'écran
+
+Here's what that data flow looks like visually:/Voilà visuellement ce qui se passe avec les données :
 
 ![Visualisation du data flow](https://redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)
 
