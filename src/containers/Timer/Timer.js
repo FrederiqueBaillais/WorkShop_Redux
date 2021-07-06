@@ -12,7 +12,6 @@ class Timer extends Component {
         this.startTimer = this.startTimer.bind(this);
         this.stopTimer = this.stopTimer.bind(this);
         this.countDown = this.countDown.bind(this);
-        this.lapTimer = this.lapTimer.bind(this);
         this.resetTimer = this.resetTimer.bind(this);
         this.incTimer = this.incTimer.bind(this);
         this.decTimer = this.decTimer.bind(this);
@@ -82,23 +81,6 @@ class Timer extends Component {
         }
     }
 
-    lapTimer() {
-        if (this.timer !== 0 && this.state.seconds !== 0) {
-            const newLaps = [...this.state.laps];
-
-            this.setState((prevState) => {
-                return {
-                    laps: newLaps.concat(prevState.time),
-                };
-            });
-        }
-    }
-
-    removeLap(id) {
-        const laps = this.state.laps;
-        this.setState({ laps: laps.filter((item, index) => index !== id) });
-    }
-
     resetTimer() {
         this.setState({
             time: { h: 0, m: 0, s: 0 },
@@ -145,7 +127,6 @@ class Timer extends Component {
                         <Button clicked={this.incTimer}>+</Button>
                         <Button clicked={this.startTimer}>Start</Button>
                         <Button clicked={this.stopTimer}>Stop</Button>
-                        <Button clicked={this.lapTimer}>Lap</Button>
                         <Button clicked={this.resetTimer}>Reset</Button>
                         <Button clicked={this.decTimer}>-</Button>
                     </div>
