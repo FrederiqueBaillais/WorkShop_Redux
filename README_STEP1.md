@@ -7,3 +7,23 @@ Donc, pour commencer, nous avons téléchargé le code d'état primitif dans la 
 ```git clone git@github.com:FrederiqueBaillais/WorkShop_Redux.git```
 
 **Remarque :** Pour ce workshop, nous allons nous concentrer uniquement sur la mise en œuvre de Redux et non sur la création de l'ensemble de l'application à partir de zéro. Donc, il est préférable de parcourir les principaux composants pour au moins savoir quelle fonction fait quoi. Ce sera plus facile de suivre ;-)
+
+## Travail de base
+
+Toutes les fonctionnalités dont nous avons besoin se produisent en cliquant sur un bouton, nous devons donc transmettre une fonction de "gestionnaire au clic" à chacun de nos composants ```Button``` personnalisés en utilisant la propriété réservée ```clicked```.
+
+```javascript
+<Button clicked={this.incTimer}>+</Button>
+<Button clicked={this.startTimer}>Start</Button>
+<Button clicked={this.stopTimer}>Stop</Button>
+<Button clicked={this.resetTimer}>Reset</Button>
+<Button clicked={this.decTimer}>-</Button>
+```
+
+Si vous vous demandez quel est le composant ```Button```, voici un aperçu de cela :
+
+```javascript
+function Button(props) {
+    return <button onClick={props.clicked}>{props.children}</button>;
+}
+```

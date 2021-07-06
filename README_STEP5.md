@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
 
 Ainsi, nous pouvons maintenant accéder à ces fonctions ```props``` dans notre composant et nous allons les appeler chaque fois que nous avons besoin de changement d'état.
 
-## Comment accéder au magasin depuis n'importe quel composant ?
+## Comment accéder au Store depuis n'importe quel composant ?
 
 La fonction ```mapStateToProps``` nous donne accès au store global via des accessoires.
 
@@ -48,12 +48,12 @@ Quand on clique dessus, il y a une fonction ```this.incTimer``` qui s'exécute, 
 
 ```javascript
 incTimer() {
-        if (this.state.seconds >= 0) {
-            this.setState((prevState) => ({
-                seconds: prevState.seconds + 60,
-                time: this.secondsToTime(prevState.seconds + 60),
+    if (this.state.seconds >= 0) {
+        this.setState((prevState) => ({
+            seconds: prevState.seconds + 60,
+            time: this.secondsToTime(prevState.seconds + 60),
             }));
-                }
+        }
 }
 ```
 
@@ -63,8 +63,8 @@ Voici notre nouvelle fonction ```incTimer``` :
 
 ```javascript
 incTimer() {
-        if (this.props.seconds >= 0) {
-            this.props.onIncrement(this.secondsToTime);
+    if (this.props.seconds >= 0) {
+        this.props.onIncrement(this.secondsToTime);
         }
 }
 ```

@@ -1,23 +1,3 @@
-## Travail de base
-
-Toutes les fonctionnalités dont nous avons besoin se produisent en cliquant sur un bouton, nous devons donc transmettre une fonction de "gestionnaire au clic" à chacun de nos composants ```Button``` personnalisés en utilisant la propriété réservée ```clicked```.
-
-```javascript
-<Button clicked={this.incTimer}>+</Button>
-<Button clicked={this.startTimer}>Start</Button>
-<Button clicked={this.stopTimer}>Stop</Button>
-<Button clicked={this.resetTimer}>Reset</Button>
-<Button clicked={this.decTimer}>-</Button>
-```
-
-Si vous vous demandez quel est le composant ```Button```, voici un aperçu de cela :
-
-```javascript
-function Button(props) {
-    return <button onClick={props.clicked}>{props.children}</button>;
-}
-```
-
 ## Conception du Store
 
 D'après nos connaissances Redux précédentes, nous savons que l'ensemble de notre application doit disposer d'un store global qui stockera toutes les données d'état. Choisissons donc la structure de notre store.

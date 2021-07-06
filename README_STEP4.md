@@ -1,31 +1,3 @@
-## Connexion avec le composant Timer
-
-Nous allons travailler sur le composant ```timer.js```. Nous devons d'abord importer les variables et les fonctions nécessaires.
-
-```javascript
-import { connect } from "react-redux";
-
-import {
-    INCREMENT,
-    DECREMENT,
-    COUNTDOWN,
-    COUNTDOWNATZERO,
-    RESET
-} from "../../store/actions";
-```
-
-Donc, maintenant si vous regardez attentivement le code, vous remarquerez dans chaque fonction attachée à ces boutons, il y a un appel à ```this.setState``` qui mute notre état local et re-rend notre composant. C'est ce que nous devons changer en utilisant Redux.
-
-La prochaine chose que nous devrions faire est de descendre ```export default Timer``` et d'encapsuler le ```Timer```dans la fonction ```connect``` que nous venons d'importer.
-
-```export default connect(mapStateToProps, mapDispatchToProps)(Timer);```
-
-Attends, mais c'est quoi ```mapStateToPropset``` et ```mapDispatchToProps``` ? Ce ne sont des fonctions que nous allons bientôt définir. Nous y reviendrons une fois que nous aurons fini de fabriquer nos réducteurs. Une chose à la fois.
-
-## Création des réducteurs
-
-Enfin, il est temps de créer nos réducteurs qui passeront l'état mis à jour à l'objet store, ce qui conduira notre composant à re-rendre et à nous montrer la nouvelle heure. Comme vous avez déjà créé un fichier : ```timer.js```, vous pouvez vous lancer directement.
-
 ## Création du réducteur ```timer.js```
 
 Tout d'abord, importons nos variables d'action au-dessus de la structure du fichier.
