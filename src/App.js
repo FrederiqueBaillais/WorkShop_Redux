@@ -1,6 +1,7 @@
 import React from "react";
+import './assets/css/style.css';
 import Timer from "./containers/Timer/Timer";
-import "./tailwind.generated.css";
+
 
 function App() {
     return (
