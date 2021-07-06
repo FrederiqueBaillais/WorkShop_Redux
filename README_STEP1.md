@@ -6,7 +6,11 @@ Donc, pour commencer, nous avons téléchargé le code d'état primitif dans la 
 
 ```git clone git@github.com:FrederiqueBaillais/WorkShop_Redux.git```
 
-```npm install react react-dom react-scripts react-redux redux```
+```git checkout react```
+
+```npm i```
+
+```npm start```
 
 **Remarque :** Pour ce workshop, nous allons nous concentrer uniquement sur la mise en œuvre de Redux et non sur la création de l'ensemble de l'application à partir de zéro. Donc, il est préférable de parcourir les principaux composants pour au moins savoir quelle fonction fait quoi. Ce sera plus facile de suivre ;-)
 
