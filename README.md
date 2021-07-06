@@ -17,7 +17,6 @@ Nous allons vous présenter Redux, qui travaille avec React.
 
 [Laura Vilain](https://github.com/Laura-VLN), [Loïc Hannecart](https://github.com/HanLoi) et [Frédérique Baillais](https://github.com/FrederiqueBaillais)
 
-## Introduction
 ## Introduction React
 
   Avant de s'intéresser de plus près à Redux, il est important de comprendre les avantages de React : 
@@ -45,7 +44,7 @@ Nous allons vous présenter Redux, qui travaille avec React.
     ReactDOM.render(element, document.getElementById('root'));
     ```
 
-  -> Le composant est constitué d'une constante element qui a pour valeur "Hello World!".
+  -> Le composant est constitué d'une constante element qui a pour valeur le h1 "Hello World!".
   -> La fonction render renvoie element dans la div dont l'id est "root".
 
 ### Fonctions classes
@@ -58,7 +57,7 @@ Nous allons vous présenter Redux, qui travaille avec React.
     }
     ```
 
-  On crée une classe Welcome qui étant de React.component et dont le render retournera un titre h1 "Bonjour, -le name qui aura été défini-". 
+  On crée une classe Welcome qui étend de React.Component et dont le render retournera un titre h1 "Bonjour, -le name qui aura été défini-". 
 
 ### Fonctions composants
 
@@ -137,49 +136,51 @@ Les composants ne peuvent jamais modifier leurs propres props :
 
 ### Historique
 
-React est une librairie JavaScript libre développée par Facebook depuis 2013. Le but principal de cette bibliothèque est de faciliter la création d'applications web monopage, via la création de composants dépendants d'un état et générants une page (ou portion) HTML à chaque changement d'état. 
+React est une librairie JavaScript libre développée par Facebook depuis 2013. Le but principal de cette librairie est de faciliter la création d'applications web monopage via la création de composants dépendants d'un état et générants une page (ou portion) HTML à chaque changement d'état. 
 
-Redux, quant à lui, a été créé par Dan Abramov et Andrew Clark et sa première version est apparu le 2 juin 2015. Abramov a commencé à écrire la première implémentation de Redux lors de la préparation pour un discours de conférence à React Europe. Sa dernière version est actuellement la 7.1.0 qui est sorti le 11 juin 2019. 
+Redux, quant à lui, a été créé par Dan Abramov et Andrew Clark et sa première version est apparue le 2 juin 2015. Abramov a commencé à écrire la première implémentation de Redux lors de la préparation pour un discours de conférence à React Europe. Sa dernière version est actuellement la 7.1.0 qui est sortie le 11 juin 2019. 
 
 ### Comprendre Redux
 
-Avant tout, pour comprendre Redux, il faut comprendre comment transite les données avec Redux.
+Avant tout, il faut comprendre comment transitent les données avec Redux.
 En ce qui concerne React par exemple, nous pouvons parler du "one-way data flow", qui se décrit de la façon suivante lors de la mise à jour de l'app :
 
   * L'état décrit la condition de l'app à un moment précis
   * L'UI fait un rendu basé sur cet état
-  * Quand quelque chose survient (comme le clique d'un utilisateur),l'état est mis à jour sur base de cet évènement
+  * Quand quelque chose survient (comme le clic d'un utilisateur), l'état est mis à jour sur base de cet événement
   * L'UI refait un rendu basé sur ce nouvel état
 
-For Redux specifically, we can break these steps into more detail:/Pour Redux spécifiquement, nous pouvons nous passer de ces étapes :
+Pour Redux spécifiquement, nous pouvons décomposer ces étapes :
 
   Setup initial:
 
-  * Un store Redux est crée dans le root du reducer
-  * The store calls the root reducer once, and saves the return value as its initial state/Le store appel le reducer une fois et sauvegarde les valeur retournée comme l'état initiale
-  * Quand l'UI est rendu, le component de l'UI a accès à l'état actuelle du store de Redux et utilise ces données pour décider quoi rendre. Il observe aussi les futures   mise à jours du store ainsi il sait quand un état a changé.
+  * Un store Redux est créé dans le root du reducer
+  * Le store appel le reducer une fois et sauvegarde les valeur retournée comme l'état initial
+  * Quand l'UI est rendu, le component de l'UI a accès à l'état actuel du store de Redux et utilise ces données pour décider quoi rendre. Il observe aussi les futures mises à jour du store ainsi il sait quand un état a changé.
   
   Mise à jour:
-  * Something happens in the app, such as a user clicking a button/ Quelque chose survient dans l'app, comme le clique sur un bouton 
-  * The app code dispatches an action to the Redux store, like dispatch({type: 'counter/incremented'})/ Le code de l'app est envoyé par une action vers le store de Redux, comme par exemple envoyé ({type: 'counter/incremented'})
-  * The store runs the reducer function again with the previous state and the current action, and saves the return value as the new state/Le store lance encore la fonction du reducer avec les états précédents et l'action actuelle et sauvegarde les données retourner comme le nouvel état
-  * The store notifies all parts of the UI that are subscribed that the store has been updated/Le store notifie toutes les parties de l'UI qu'il a été mis à jours
-  * Each UI component that needs data from the store checks to see if the parts of the state they need have changed./Chaque component de l'UI qui ont besoin des données du store regarde si la partie des états qu'ils ont besoin ont changé.
-  * Each component that sees its data has changed forces a re-render with the new data, so it can update what's shown on the screen/Chaque component qui constate que ses données ont changé refait un rendu avec ces nouvelles données, ainsi il peut mettre à jours ce qui est afficher à l'écran
 
-Here's what that data flow looks like visually:/ Visualisation du data flow :
+  * Quelque chose survient dans l'app, comme le clic sur un bouton 
+  * Le code de l'app dispatche une action vers le store de Redux, comme par exemple ({type: 'counter/incremented'})
+  * Le store lance encore la fonction du reducer avec l'état précédent et l'action actuelle et sauvegarde les données retournées comme le nouvel état
+  * Le store notifie toutes les parties de l'UI qu'il a été mis à jour
+  * Each UI component that needs data from the store checks to see if the parts of the state they need have changed./Chaque component de l'UI qui a besoin des données du store vérifie si la partie des états dont ils ont besoin a changé.
+  * Chaque component qui constate que ses données ont changé refait un rendu avec ces nouvelles données, ainsi il peut mettre à jour ce qui est affiché à l'écran
+
+Visualisation du data flow :
 
 ![Visualisation du data flow](https://redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)
 
 
 ### Vocabulaire
 
-Avant de regarder à comment intégrer Redux à notre app, il est impportant de préciser les termes suivant du point du de Redux.
+Avant de regarder à comment intégrer Redux à notre app, il est impportant de préciser les termes suivants :
+
 #### Le store
 
   Le store est un grand objet JavaScript qui contient des tonnes de paires clé-valeur qui représentent l'état actuel de l'application. Contrairement à l'objet d'état dans React qui est réparti sur différents composants, nous n'avons qu'un seul magasin. Le store fournit l’état de l’application et chaque fois que l’état est mis à jour, la vue est rendue. 
 
-  toutefois, vous ne pouvez jamais muter ou changer de magasin. Au lieu de cela, vous créez de nouvelles versions du store via une action et le reducer. 
+  Toutefois, vous ne pouvez jamais muter ou changer de magasin. Au lieu de cela, vous créez de nouvelles versions du store via une action et le reducer. 
 
 #### Qu’est-ce qu’une action au sens Redux ?
 
@@ -189,7 +190,7 @@ Avant de regarder à comment intégrer Redux à notre app, il est impportant de 
 
   Comment faire pour exécuter simultanément plusieurs actions ?
 
-  Il est possible avec React de créer des actions asynchrones non bloquantes (les Redux async action évoquées en haut de l’article).
+  Il est possible avec React de créer des actions asynchrones non bloquantes (Redux async action).
 
   Si les actions décrivent un changement qui vient de se produire, qui change le state de l’application ?
 
@@ -198,7 +199,7 @@ Avant de regarder à comment intégrer Redux à notre app, il est impportant de 
 
 #### Les Reducers
 
-  Le reducer est une fonction pure (sans état) qui prend en entrée le précédent state et un action pour retourner en sortie le prochain state.
+  Le reducer est une fonction pure (sans état) qui prend en entrée le précédent state et une action pour retourner en sortie le prochain state.
 
      (previousState, action) =>  newState
 
@@ -247,14 +248,14 @@ Avant de regarder à comment intégrer Redux à notre app, il est impportant de 
 
 Pour terminer, si nous voulons intégrer Redux dans notre UI, il est nécessaire de passer par ces différentes étapes :
 
-  * Crée le store
+  * Créer le store
   * Utiliser la fonction Subscribe()
   * A l'intérieur du callback de la fonction subscribe()
-      * Récupérer l'état actuelle 
-      * Extraire les données nécessaire par l'UI
+      * Récupérer l'état actuel
+      * Extraire les données nécessaires par l'UI
       * Mettre à jour l'UI avec les données
-  * Si nécessaire, rendre l'UI avec les états initials
-  * Respond to UI inputs by dispatching Redux actions / Répondre à l'UI en affichant les actions de Redux
+  * Si nécessaire, rendre l'UI avec les états initiaux
+  * Répondre à l'UI en affichant les actions de Redux
 
 CODE :
 
@@ -285,5 +286,3 @@ render()
 document.getElementById('increment').addEventListener('click', function () {
   store.dispatch({ type: 'counter/incremented' })
 })
-
-
